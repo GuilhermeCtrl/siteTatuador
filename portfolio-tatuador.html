@@ -5,126 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Péricles Tattoo e Piercing — Portfólio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Oswald:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Jost:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0b0a09;
-    --bg-raised: #141210;
-    --ink: #e9e2d3;
-    --ink-dim: #a89d88;
-    --blood: #7a1414;
-    --blood-bright: #b5241f;
-    --iron: #3a352c;
-    --line: #2a261f;
+    --bg: #f5f1e6;
+    --bg-raised: #ece4d1;
+    --ink: #1f3b3f;
+    --ink-dim: #5c7370;
+    --sea: #2f7d8c;
+    --sea-deep: #1c5460;
+    --foam: #ffffff;
+    --line: #ddd3ba;
+    --sand-line: #cbbfa0;
+    --placeholder: #b9782f;
   }
 
   *{margin:0; padding:0; box-sizing:border-box;}
-
   html{scroll-behavior:smooth;}
 
   body{
-    background:
-      radial-gradient(ellipse at 20% -10%, rgba(122,20,20,0.12), transparent 45%),
-      radial-gradient(ellipse at 90% 10%, rgba(122,20,20,0.08), transparent 40%),
-      var(--bg);
+    background:var(--bg);
     color:var(--ink);
-    font-family:'Oswald', sans-serif;
+    font-family:'Jost', sans-serif;
     font-weight:300;
-    letter-spacing:0.02em;
+    letter-spacing:0.01em;
     overflow-x:hidden;
   }
 
-  /* grain texture overlay */
-  body::before{
-    content:"";
-    position:fixed; inset:0;
-    pointer-events:none;
-    z-index:999;
-    opacity:0.05;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    mix-blend-mode:overlay;
-  }
-
-  h1,h2,h3{ font-family:'Cinzel', serif; font-weight:800; letter-spacing:0.04em; }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:600; }
 
   a{color:inherit; text-decoration:none;}
+
+  .ph{
+    color:var(--placeholder);
+    border-bottom:1px dashed var(--placeholder);
+  }
+
+  /* ---------- scroll reveal ---------- */
+  .reveal{
+    opacity:0; transform:translateY(26px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
 
   /* ============ NAV ============ */
   header{
     position:sticky; top:0; z-index:100;
     display:flex; align-items:center; justify-content:space-between;
-    padding:1.1rem 5vw;
-    background:rgba(11,10,9,0.85);
-    backdrop-filter: blur(6px);
+    padding:1.2rem 5vw;
+    background:rgba(245,241,230,0.88);
+    backdrop-filter: blur(8px);
     border-bottom:1px solid var(--line);
   }
   .brand{
-    font-family:'Cinzel', serif; font-weight:800;
-    font-size:1.25rem; letter-spacing:0.12em;
-    display:flex; align-items:center; gap:0.6rem;
+    font-family:'Fraunces', serif; font-weight:600; font-style:italic;
+    font-size:1.3rem;
+    display:flex; align-items:center; gap:0.55rem;
+    color:var(--sea-deep);
   }
-  .brand .mark{ color:var(--blood-bright); font-size:1.5rem; line-height:1;}
-  nav ul{ list-style:none; display:flex; gap:2.2rem; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.18em;}
+  .brand .mark{ color:var(--sea); font-size:1.2rem; }
+  .brand .sub{ font-family:'Space Mono', monospace; font-style:normal; color:var(--ink-dim); font-weight:400; font-size:0.6rem; margin-left:0.3rem; letter-spacing:0.15em; text-transform:uppercase;}
+  nav ul{ list-style:none; display:flex; gap:2.2rem; font-size:0.82rem; letter-spacing:0.04em;}
   nav a{ position:relative; color:var(--ink-dim); transition:color .25s;}
-  nav a:hover{ color:var(--ink); }
+  nav a:hover{ color:var(--sea-deep); }
   nav a::after{
     content:""; position:absolute; left:0; bottom:-6px; width:0; height:1px;
-    background:var(--blood-bright); transition:width .25s;
+    background:var(--sea); transition:width .3s;
   }
   nav a:hover::after{ width:100%; }
-  .nav-toggle{ display:none; background:none; border:1px solid var(--iron); color:var(--ink); width:38px; height:38px; font-size:1.1rem; cursor:pointer;}
+  .nav-toggle{ display:none; background:none; border:1px solid var(--sand-line); color:var(--ink); width:38px; height:38px; font-size:1.1rem; cursor:pointer;}
 
   /* ============ HERO ============ */
   .hero{
     position:relative;
-    min-height:88vh;
+    min-height:92vh;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center;
-    padding:6rem 5vw 4rem;
-    border-bottom:1px solid var(--line);
+    padding:6rem 5vw 10rem;
     overflow:hidden;
+    background:linear-gradient(180deg, #f8f4e9 0%, #eef2ea 55%, #e2ede9 100%);
   }
-  .hero::before{
-    content:"";
-    position:absolute; inset:0;
-    background:
-      linear-gradient(180deg, transparent 60%, var(--bg) 100%),
-      repeating-linear-gradient(115deg, rgba(122,20,20,0.05) 0 2px, transparent 2px 40px);
+  .hero-light{
+    position:absolute; top:-20%; left:50%; width:140%; height:70%;
+    transform:translateX(-50%);
+    background:radial-gradient(ellipse at center, rgba(255,255,255,0.65), transparent 65%);
     pointer-events:none;
   }
   .eyebrow{
     font-family:'Space Mono', monospace;
-    font-size:0.72rem; letter-spacing:0.35em; text-transform:uppercase;
-    color:var(--blood-bright); margin-bottom:1.4rem;
+    font-size:0.72rem; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--sea); margin-bottom:1.4rem;
   }
   .hero h1{
-    font-size:clamp(2.6rem, 8vw, 6rem);
-    line-height:0.95;
-    text-transform:uppercase;
-    color:var(--ink);
-    text-shadow: 0 0 40px rgba(181,36,31,0.25);
+    font-size:clamp(2.4rem, 7vw, 5.2rem);
+    line-height:1.05;
+    color:var(--sea-deep);
+    font-weight:600;
   }
-  .hero h1 span{ display:block; color:var(--blood-bright); font-size:0.42em; letter-spacing:0.3em; margin-top:0.8rem;}
+  .hero h1 .accent{ font-style:italic; color:var(--sea); font-weight:500; }
   .hero p{
     max-width:520px; margin:1.8rem auto 0;
-    color:var(--ink-dim); font-size:1rem; line-height:1.7;
+    color:var(--ink-dim); font-size:1.02rem; line-height:1.75;
   }
   .hero-cta{
     margin-top:2.6rem; display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;
+    position:relative; z-index:2;
   }
   .btn{
-    font-family:'Space Mono', monospace; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
-    padding:0.95rem 2.1rem; border:1px solid var(--iron); cursor:pointer;
-    background:transparent; color:var(--ink); transition: all .25s;
+    font-family:'Space Mono', monospace; font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase;
+    padding:0.95rem 2.1rem; border:1px solid var(--sea-deep); cursor:pointer;
+    background:transparent; color:var(--sea-deep); transition: all .25s;
+    border-radius:2px;
   }
-  .btn:hover{ border-color:var(--blood-bright); color:var(--blood-bright); }
-  .btn.solid{ background:var(--blood); border-color:var(--blood); color:var(--ink);}
-  .btn.solid:hover{ background:var(--blood-bright); border-color:var(--blood-bright); color:#fff;}
+  .btn:hover{ background:var(--sea-deep); color:var(--foam); }
+  .btn.solid{ background:var(--sea); border-color:var(--sea); color:var(--foam);}
+  .btn.solid:hover{ background:var(--sea-deep); border-color:var(--sea-deep); }
 
-  .scratch-divider{
-    width:100%; height:2px; margin:0 auto;
-    background:
-      repeating-linear-gradient(90deg, var(--iron) 0 14px, transparent 14px 20px);
+  /* waves at hero base */
+  .waves{
+    position:absolute; left:0; right:0; bottom:0; height:170px;
+    overflow:hidden; line-height:0;
+  }
+  .waves svg{ position:absolute; bottom:0; width:200%; height:100%; }
+  .wave-back{ opacity:0.35; animation:wave-move 22s linear infinite; }
+  .wave-mid{ opacity:0.55; animation:wave-move 16s linear infinite reverse; bottom:-6px; }
+  .wave-front{ opacity:0.9; animation:wave-move 11s linear infinite; bottom:-10px; }
+  @keyframes wave-move{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wave-back,.wave-mid,.wave-front{ animation:none; }
+    .reveal{ transition:none; opacity:1; transform:none; }
   }
 
   /* ============ SECTION HEADS ============ */
@@ -134,11 +146,23 @@
     margin-bottom:2.6rem; padding-bottom:1.4rem; border-bottom:1px solid var(--line);
   }
   .section-head .tag{
-    font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase;
-    color:var(--blood-bright); margin-bottom:0.5rem; display:block;
+    font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.28em; text-transform:uppercase;
+    color:var(--sea); margin-bottom:0.5rem; display:block;
   }
-  .section-head h2{ font-size:clamp(1.8rem, 4vw, 2.6rem); text-transform:uppercase; }
-  .section-head .count{ font-family:'Space Mono', monospace; color:var(--ink-dim); font-size:0.85rem;}
+  .section-head h2{ font-size:clamp(1.7rem, 3.6vw, 2.4rem); color:var(--sea-deep); }
+  .section-head .count{ font-family:'Space Mono', monospace; color:var(--ink-dim); font-size:0.82rem;}
+
+  /* ---------- filtro de estilos ---------- */
+  .filters{
+    display:flex; flex-wrap:wrap; gap:0.7rem; margin-bottom:2.4rem;
+  }
+  .filter-chip{
+    font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.55rem 1.1rem; border:1px solid var(--sand-line); color:var(--ink-dim);
+    background:transparent; cursor:pointer; border-radius:2px; transition:all .2s;
+  }
+  .filter-chip:hover{ border-color:var(--sea); color:var(--sea-deep); }
+  .filter-chip.active{ background:var(--sea-deep); border-color:var(--sea-deep); color:var(--foam); }
 
   /* ============ GALLERY ============ */
   .gallery{
@@ -154,44 +178,24 @@
     overflow:hidden;
     cursor:pointer;
     isolation:isolate;
+    transition:opacity .35s ease, transform .35s ease;
   }
+  .card.hidden{ display:none; }
   .card img{
     width:100%; height:100%; object-fit:cover;
-    filter:grayscale(35%) contrast(1.1);
-    transition:transform .5s ease, filter .5s ease;
+    filter:saturate(0.9) contrast(1.02);
+    transition:transform .6s ease, filter .6s ease;
   }
-  .card:hover img{ transform:scale(1.08); filter:grayscale(0%) contrast(1.15); }
+  .card:hover img{ transform:scale(1.06); filter:saturate(1.05); }
   .card .overlay{
     position:absolute; inset:0;
-    background:linear-gradient(0deg, rgba(11,10,9,0.92) 0%, rgba(11,10,9,0.1) 55%, transparent 100%);
+    background:linear-gradient(0deg, rgba(28,84,96,0.88) 0%, rgba(28,84,96,0.05) 55%, transparent 100%);
     display:flex; align-items:flex-end; padding:1rem;
     opacity:0; transition:opacity .3s;
   }
   .card:hover .overlay{ opacity:1; }
-  .card .overlay .meta{ font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--ink-dim); letter-spacing:0.05em;}
-  .card .overlay .meta strong{ display:block; color:var(--ink); font-family:'Oswald', sans-serif; font-size:0.95rem; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem;}
-  .card .remove-btn{
-    position:absolute; top:0.6rem; right:0.6rem;
-    width:28px; height:28px; border:1px solid var(--iron); background:rgba(11,10,9,0.75);
-    color:var(--ink-dim); font-size:0.9rem; line-height:1; cursor:pointer;
-    display:flex; align-items:center; justify-content:center;
-    opacity:0; transition:opacity .2s, color .2s, border-color .2s;
-  }
-  .card:hover .remove-btn{ opacity:1; }
-  .card .remove-btn:hover{ color:var(--blood-bright); border-color:var(--blood-bright); }
-
-  /* add-photo card */
-  .add-card{
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.6rem;
-    border:1px dashed var(--iron);
-    background:transparent;
-    color:var(--ink-dim);
-    font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase;
-    transition: border-color .25s, color .25s;
-  }
-  .add-card:hover{ border-color:var(--blood-bright); color:var(--blood-bright); }
-  .add-card .plus{ font-family:'Cinzel', serif; font-size:2.4rem; line-height:1; color:inherit;}
-  #file-input{ display:none; }
+  .card .overlay .meta{ font-family:'Space Mono', monospace; font-size:0.7rem; color:rgba(255,255,255,0.75); letter-spacing:0.04em;}
+  .card .overlay .meta strong{ display:block; color:#fff; font-family:'Jost', sans-serif; font-size:0.95rem; font-weight:500; margin-bottom:0.2rem;}
 
   /* ============ ABOUT ============ */
   .about{
@@ -199,59 +203,76 @@
   }
   .about-img{
     aspect-ratio:4/5; background:var(--bg-raised); border:1px solid var(--line);
+    overflow:hidden;
     display:flex; align-items:center; justify-content:center;
-    font-family:'Cinzel', serif; color:var(--iron); font-size:0.9rem; letter-spacing:0.2em; text-transform:uppercase;
+    font-family:'Space Mono', monospace; color:var(--ink-dim); font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase;
   }
-  .about-text .tag{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.3em; color:var(--blood-bright); text-transform:uppercase; display:block; margin-bottom:0.8rem;}
-  .about-text h2{ font-size:clamp(1.8rem,3.6vw,2.4rem); text-transform:uppercase; margin-bottom:1.2rem; }
+  .about-img img{ width:100%; height:100%; object-fit:cover; }
+  .about-text .tag{ font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.28em; color:var(--sea); text-transform:uppercase; display:block; margin-bottom:0.8rem;}
+  .about-text h2{ font-size:clamp(1.7rem,3.4vw,2.2rem); color:var(--sea-deep); margin-bottom:1.2rem; }
   .about-text p{ color:var(--ink-dim); line-height:1.85; margin-bottom:1.1rem; font-size:0.98rem;}
   .stats{ display:flex; gap:2.4rem; margin-top:1.8rem; }
-  .stats div strong{ display:block; font-family:'Cinzel', serif; font-size:1.8rem; color:var(--blood-bright);}
-  .stats div span{ font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-dim);}
+  .stats div strong{ display:block; font-family:'Fraunces', serif; font-size:1.8rem; color:var(--sea);}
+  .stats div span{ font-family:'Space Mono', monospace; font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim);}
 
-  /* ============ STYLES STRIP ============ */
-  .styles-strip{
-    display:flex; flex-wrap:wrap; gap:0.9rem; padding:0 5vw 5.5rem;
-  }
-  .style-chip{
-    font-family:'Space Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase;
-    padding:0.6rem 1.2rem; border:1px solid var(--iron); color:var(--ink-dim);
-  }
+  /* ============ FAQ ============ */
+  .faq{ max-width:760px; }
+  .faq-item{ border-bottom:1px solid var(--line); padding:1.4rem 0; }
+  .faq-item h3{ font-size:1.05rem; color:var(--sea-deep); font-weight:600; margin-bottom:0.6rem; }
+  .faq-item p{ color:var(--ink-dim); line-height:1.75; font-size:0.95rem; }
 
   /* ============ CONTACT ============ */
   .contact{
-    background:var(--bg-raised);
-    border-top:1px solid var(--line);
+    background:var(--sea-deep);
+    color:var(--foam);
     text-align:center;
   }
-  .contact .tag{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.3em; color:var(--blood-bright); text-transform:uppercase; display:block; margin-bottom:0.8rem;}
-  .contact h2{ font-size:clamp(1.9rem,5vw,3.2rem); text-transform:uppercase; margin-bottom:1rem;}
-  .contact p{ color:var(--ink-dim); max-width:480px; margin:0 auto 2rem; line-height:1.7;}
+  .contact .tag{ font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.28em; color:#9fd2da; text-transform:uppercase; display:block; margin-bottom:0.8rem;}
+  .contact h2{ font-size:clamp(1.8rem,4.6vw,2.8rem); margin-bottom:1rem; color:#fff;}
+  .contact p{ color:rgba(255,255,255,0.75); max-width:480px; margin:0 auto 2rem; line-height:1.7;}
   .contact-links{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;}
+  .contact .btn{ border-color:rgba(255,255,255,0.4); color:#fff; }
+  .contact .btn:hover{ background:rgba(255,255,255,0.12); }
+  .contact .btn.solid{ background:var(--sea); border-color:var(--sea); }
+  .contact .btn.solid:hover{ background:#3d92a3; }
+
+  .info-strip{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:2.4rem;
+    max-width:720px; margin:2.8rem auto 0; padding-top:2.2rem;
+    border-top:1px solid rgba(255,255,255,0.15);
+    text-align:left;
+  }
+  .info-strip div{ min-width:170px; }
+  .info-strip .label{ font-family:'Space Mono', monospace; font-size:0.64rem; letter-spacing:0.16em; text-transform:uppercase; color:#9fd2da; margin-bottom:0.35rem;}
+  .info-strip .value{ font-size:0.9rem; color:#fff; line-height:1.6;}
+  .age-notice{
+    margin-top:1.6rem; font-family:'Space Mono', monospace; font-size:0.68rem;
+    letter-spacing:0.06em; color:rgba(255,255,255,0.55); text-transform:uppercase;
+  }
 
   footer{
-    padding:2.2rem 5vw; text-align:center;
-    font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--ink-dim);
-    border-top:1px solid var(--line);
-    letter-spacing:0.08em;
+    padding:2rem 5vw; text-align:center;
+    font-family:'Space Mono', monospace; font-size:0.7rem; color:var(--ink-dim);
+    background:var(--sea-deep);
+    color:rgba(255,255,255,0.5);
+    letter-spacing:0.06em;
   }
-  footer .mark{ color:var(--blood-bright); }
 
   /* ============ LIGHTBOX ============ */
   .lightbox{
     position:fixed; inset:0; z-index:200;
-    background:rgba(6,5,5,0.94);
+    background:rgba(20,40,42,0.92);
     display:none; align-items:center; justify-content:center;
     padding:5vw;
   }
   .lightbox.active{ display:flex; }
-  .lightbox img{ max-width:100%; max-height:85vh; border:1px solid var(--iron); }
+  .lightbox img{ max-width:100%; max-height:85vh; border:1px solid rgba(255,255,255,0.2); }
   .lightbox-close{
     position:absolute; top:1.6rem; right:1.6rem;
-    width:42px; height:42px; border:1px solid var(--iron); background:transparent; color:var(--ink);
+    width:42px; height:42px; border:1px solid rgba(255,255,255,0.3); background:transparent; color:#fff;
     font-size:1.3rem; cursor:pointer;
   }
-  .lightbox-close:hover{ border-color:var(--blood-bright); color:var(--blood-bright); }
+  .lightbox-close:hover{ border-color:#fff; }
 
   /* ============ RESPONSIVE ============ */
   @media (max-width:820px){
@@ -269,17 +290,20 @@
     .section{ padding:4rem 6vw; }
     .stats{ gap:1.4rem; }
     .gallery{ grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:0.7rem; }
+    .info-strip{ gap:1.6rem; }
+    .hero{ padding-bottom:8rem; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="brand"><span class="mark"></span> Péricles&nbsp;Tattoo <span style="color:var(--ink-dim); font-weight:400; font-size:0.65rem; margin-left:0.4rem;"></span></div>
+  <div class="brand"><span class="mark">≈</span> Péricles <span class="sub">Tattoo &amp; Piercing</span></div>
   <nav id="nav">
     <ul>
       <li><a href="#trabalhos">Trabalhos</a></li>
       <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#duvidas">Dúvidas</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
   </nav>
@@ -287,42 +311,67 @@
 </header>
 
 <section class="hero">
-  <span class="eyebrow">Tatuagem autoral · Jacareí · São Paulo</span>
-  <h1>TINTA, AÇO<br>E&nbsp;DISTORÇÃO<span>Estúdio de tatuagem </span></h1>
-  <p>[Ideia de texto descritivo]</p>
+  <div class="hero-light"></div>
+  <span class="eyebrow ph">[eyebrow / linha de posicionamento]</span>
+  <h1 class="ph">[SLOGAN PRINCIPAL AQUI]<br><span class="accent">[complemento em itálico]</span></h1>
+  <p class="ph">[Frase de impacto — a ligação entre o trabalho de tatuador e a vida ligada ao mar]</p>
   <div class="hero-cta">
     <a href="#trabalhos" class="btn solid">Ver portfólio</a>
     <a href="#contato" class="btn">Agendar sessão</a>
   </div>
+
+  <div class="waves" aria-hidden="true">
+    <svg class="wave-back" viewBox="0 0 1600 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,90 C200,40 400,140 600,90 C800,40 1000,140 1200,90 C1400,40 1600,140 1600,90 L1600,160 L0,160 Z
+               M1600,90 C1800,40 2000,140 2200,90 C2400,40 2600,140 2800,90 C3000,40 3200,140 3200,90 L3200,160 L1600,160 Z"
+            fill="#2f7d8c"/>
+    </svg>
+    <svg class="wave-mid" viewBox="0 0 1600 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,110 C220,150 380,60 620,100 C820,140 1000,60 1200,100 C1400,140 1560,60 1600,100 L1600,160 L0,160 Z
+               M1600,100 C1820,140 1980,60 2220,100 C2420,140 2600,60 2800,100 C3000,140 3160,60 3200,100 L3200,160 L1600,160 Z"
+            fill="#1c5460"/>
+    </svg>
+    <svg class="wave-front" viewBox="0 0 1600 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,130 C250,90 350,150 600,120 C850,90 950,150 1200,120 C1400,95 1500,140 1600,120 L1600,160 L0,160 Z
+               M1600,120 C1850,90 1950,150 2200,120 C2450,90 2550,150 2800,120 C3000,95 3100,140 3200,120 L3200,160 L1600,160 Z"
+            fill="#0f3841"/>
+    </svg>
+  </div>
 </section>
 
-<div class="scratch-divider"></div>
-
-<section class="section" id="trabalhos">
+<section class="section reveal" id="trabalhos">
   <div class="section-head">
     <div>
-      <span class="tag">Arquivo · 001—0XX</span>
+      <span class="tag">Portfólio</span>
       <h2>Trabalhos recentes</h2>
     </div>
-    <span class="count" id="photo-count">0 peças no grid</span>
+    <span class="count" id="photo-count">0 peças</span>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter-chip active" data-filter="all">Todos</button>
+    <button class="filter-chip" data-filter="fine-line">Traço Fino</button>
+    <button class="filter-chip" data-filter="aquarela">Aquarela Marinha</button>
+    <button class="filter-chip" data-filter="blackwork">Blackwork Suave</button>
+    <button class="filter-chip" data-filter="old-school">Old School Naval</button>
+    <button class="filter-chip" data-filter="ornamental">Ornamental</button>
   </div>
 
   <div class="gallery" id="gallery">
-    </div>
+    <!-- fotos renderizadas via seedPhotos no script abaixo -->
+  </div>
 </section>
 
-<div class="scratch-divider"></div>
-
-<section class="section" id="sobre">
+<section class="section reveal" id="sobre">
   <div class="about">
     <div class="about-img">
-  <img src="imagens/pericles.jpg" alt="Péricles, tatuador e piercer">
-</div>
+      <img src="imagens/pericles.jpg" alt="Péricles, tatuador e piercer">
+    </div>
     <div class="about-text">
       <span class="tag">O Artista</span>
-      <h2>Feito no ferro, criado no rock</h2>
-      <p>[Exemplo de descrição]</p>
-      <p>[Exemplo de descrição 2]</p>
+      <h2 class="ph">[Frase de efeito sobre o artista]</h2>
+      <p class="ph">[Parágrafo de apresentação — trajetória, tempo de estúdio, a relação entre o trabalho e o mar como referência de vida]</p>
+      <p class="ph">[Parágrafo secundário — processo de trabalho, criação de desenhos personalizados, cuidado com material e higiene]</p>
       <div class="stats">
         <div><strong>26+</strong><span>Anos de estúdio</span></div>
         <div><strong>1000+</strong><span>Peças fechadas</span></div>
@@ -332,30 +381,60 @@
   </div>
 </section>
 
-<div class="styles-strip">
-  <span class="style-chip">Exemplo estilo tattoo</span>
-  <span class="style-chip">teste</span>
-  <span class="style-chip">Tatuagem autoral</span>
-  <span class="style-chip">Realismo</span>
-  <span class="style-chip">Fine Line</span>
-  <span class="style-chip">Dark art</span>
-</div>
-
-<section class="contact" id="contato">
-  <div class="section" style="padding-bottom:5.5rem;">
-    <span class="tag">Sessões abertas</span>
-    <h2>Bora marcar sua peça</h2>
-    <p>Envie sua ideia, referência e a região do corpo. Retorno com orçamento e datas disponíveis.</p>
-    <div class="contact-links">
-      <a href="https://www.instagram.com/periclestattooepiercing/" class="btn solid">Instagram</a>
-      <a href="https://wa.me/5512997999464" class="btn">WhatsApp</a>
-      <a href="https://m.youtube.com/channel/UC2w0QyLGT_lKLuoFNpea_vg?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcATrDYFwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpx8dKi-gIsclCoddEW-CphtZX2SypUBHhDorcW6lMC2pql3pMtTZ_i6LdjQQ_aem_ZJbgm1LcdZscgbmehwV0nA" class="btn">Youtube</a>
+<section class="section reveal" id="duvidas">
+  <div class="section-head">
+    <div>
+      <span class="tag">Antes de agendar</span>
+      <h2>Dúvidas frequentes</h2>
+    </div>
+  </div>
+  <div class="faq">
+    <div class="faq-item">
+      <h3 class="ph">[Pergunta: qual o primeiro passo para agendar?]</h3>
+      <p class="ph">[Resposta explicando o processo de primeiro contato, consulta e criação do projeto]</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="ph">[Pergunta: como funciona o orçamento?]</h3>
+      <p class="ph">[Resposta sobre como o valor é definido — tamanho, local do corpo, complexidade]</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="ph">[Pergunta: quais cuidados após a tatuagem?]</h3>
+      <p class="ph">[Resposta sobre cicatrização e cuidados pós-sessão]</p>
     </div>
   </div>
 </section>
 
+<section class="contact" id="contato">
+  <div class="section" style="padding-bottom:5.5rem;">
+    <span class="tag">Sessões abertas</span>
+    <h2 class="ph">[Chamada final de ação]</h2>
+    <p class="ph">[Frase curta reforçando como agendar / o que enviar na mensagem]</p>
+    <div class="contact-links">
+      <a href="https://www.instagram.com/periclestattooepiercing/" class="btn solid">Instagram</a>
+      <a href="https://wa.me/5512997999464" class="btn">WhatsApp</a>
+      <a href="https://m.youtube.com/channel/UC2w0QyLGT_lKLuoFNpea_vg" class="btn">Youtube</a>
+    </div>
+
+    <div class="info-strip">
+      <div>
+        <div class="label">Endereço</div>
+        <div class="value">Rua Olimpo Catão, 33 — Centro<br>Jacareí, SP</div>
+      </div>
+      <div>
+        <div class="label">Horário</div>
+        <div class="value">Seg. a Sex. · 8h às 20h<br>Sábado · 10h às 19h</div>
+      </div>
+      <div>
+        <div class="label">Pagamento</div>
+        <div class="value">Visa e Mastercard<br>Agendamento prévio</div>
+      </div>
+    </div>
+    <div class="age-notice">Não atendemos menores de 18 anos</div>
+  </div>
+</section>
+
 <footer>
-  <span class="mark">✦</span> Péricles Tattoo e Piercing — todos os direitos reservados
+  Péricles Tattoo e Piercing — todos os direitos reservados
 </footer>
 
 <div class="lightbox" id="lightbox">
@@ -370,108 +449,65 @@
   navToggle.addEventListener('click', () => nav.classList.toggle('open'));
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
-  // ---- galeria dinâmica ----
+  // ---- galeria (somente exibição — troque os arquivos na pasta /imagens) ----
   const gallery = document.getElementById('gallery');
-  const addCard = document.getElementById('add-card');
-  const fileInput = document.getElementById('file-input');
   const photoCount = document.getElementById('photo-count');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
 
-  // fotos de exemplo (placeholders) — substitua pelas fotos reais do estúdio
-  const seedPhotos = [{
-    title: 'Tatuagem Leão',
-    tag: 'Realismo · Braço',
-    src: 'imagens/tattoo-01.png'
-  },
-  {
-    title: 'Tatuagem Cobra ',
-    tag: 'Fine Line · Antebraço',
-    src: 'imagens/tattoo-02.png'
-  },
-  {
-    title: 'Tatuagem Rosa',
-    tag: 'Realismo · Braço',
-    src: 'imagens/tattoo-03.png'
-  },
-  {
-    title: 'Tatuagem Pet',
-    tag: 'Realismo · Braço',
-    src: 'imagens/tattoo-04.png'
-  },
-  {
-    title: 'Tatuagem Carpa',
-    tag: 'Fine Line · Costas',
-    src: 'imagens/tattoo-05.png'
-  },
-  {
-    title: 'Tatuagem Pet',
-    tag: 'Realismo · Perna',
-    src: 'imagens/tattoo-06.png'
-  },
-  {
-    title: 'Tatuagem Pet',
-    tag: 'Fine Line · Perna',
-    src: 'imagens/tattoo-07.png'
-  },
-  {
-    title: 'Tatuagem Fenix',
-    tag: 'Realismo · Costas',
-    src: 'imagens/tattoo-08.png'
-  },
-  {
-    title: 'Tatuagem ',
-    tag: 'Fine Line Colorida · Braço',
-    src: 'imagens/tattoo-09.png'
-  },{
-    title: 'Tatuagem Leoa',
-    tag: 'Realismo · Braço',
-    src: 'imagens/tattoo-10.png'
-  },
-
-];
+  // lista de fotos do portfólio — adicione, remova ou reordene itens aqui.
+  // "cat" precisa bater com um data-filter dos chips acima.
+  const seedPhotos = [
+    { title:'Tatuagem Leão',   tag:'Blackwork Suave · Braço',      src:'imagens/tattoo-01.png', cat:'blackwork' },
+    { title:'Tatuagem Cobra',  tag:'Traço Fino · Antebraço',        src:'imagens/tattoo-02.png', cat:'fine-line' },
+    { title:'Tatuagem Rosa',   tag:'Aquarela Marinha · Braço',      src:'imagens/tattoo-03.png', cat:'aquarela' },
+    { title:'Tatuagem Pet',    tag:'Traço Fino · Braço',            src:'imagens/tattoo-04.png', cat:'fine-line' },
+    { title:'Tatuagem Carpa',  tag:'Old School Naval · Costas',     src:'imagens/tattoo-05.png', cat:'old-school' },
+    { title:'Tatuagem Pet',    tag:'Blackwork Suave · Perna',       src:'imagens/tattoo-06.png', cat:'blackwork' },
+    { title:'Tatuagem Pet',    tag:'Traço Fino · Perna',            src:'imagens/tattoo-07.png', cat:'fine-line' },
+    { title:'Tatuagem Fênix',  tag:'Old School Naval · Costas',     src:'imagens/tattoo-08.png', cat:'old-school' },
+    { title:'Tatuagem',        tag:'Aquarela Marinha · Braço',      src:'imagens/tattoo-09.png', cat:'aquarela' },
+    { title:'Tatuagem Leoa',   tag:'Ornamental · Braço',            src:'imagens/tattoo-10.png', cat:'ornamental' }
+  ];
 
   function updateCount(){
-    const n = gallery.querySelectorAll('.card:not(.add-card)').length;
-    photoCount.textContent = n + (n === 1 ? ' peça no grid' : ' peças no grid');
+    const visible = gallery.querySelectorAll('.card:not(.hidden)').length;
+    photoCount.textContent = visible + (visible === 1 ? ' peça' : ' peças');
   }
 
-  function addPhotoCard(src, title, tag){
+  function addPhotoCard(p){
     const card = document.createElement('div');
     card.className = 'card';
+    card.dataset.cat = p.cat;
     card.innerHTML = `
-      <img src="${src}" alt="${title}">
-      <button class="remove-btn" title="Remover">✕</button>
+      <img src="${p.src}" alt="${p.title}">
       <div class="overlay">
-        <div class="meta"><strong>${title}</strong>${tag}</div>
+        <div class="meta"><strong>${p.title}</strong>${p.tag}</div>
       </div>
     `;
-    card.querySelector('img').addEventListener('click', () => openLightbox(src));
-    card.querySelector('.remove-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      card.remove();
-      updateCount();
-    });
-    gallery.insertBefore(card, addCard);
-    updateCount();
+    card.querySelector('img').addEventListener('click', () => openLightbox(p.src));
+    gallery.appendChild(card);
   }
 
-  seedPhotos.forEach(p => addPhotoCard(p.src, p.title, p.tag));
+  seedPhotos.forEach(addPhotoCard);
+  updateCount();
 
-  addCard.addEventListener('click', () => fileInput.click());
-  fileInput.addEventListener('change', (e) => {
-    const files = Array.from(e.target.files);
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        addPhotoCard(ev.target.result, file.name.replace(/\.[^/.]+$/, ''), 'Adicionada agora');
-      };
-      reader.readAsDataURL(file);
+  // ---- filtro por estilo ----
+  const filters = document.getElementById('filters');
+  filters.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-chip');
+    if(!btn) return;
+    filters.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    gallery.querySelectorAll('.card').forEach(card => {
+      card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
     });
-    fileInput.value = '';
+    updateCount();
   });
 
+  // ---- lightbox ----
   function openLightbox(src){
     lightboxImg.src = src;
     lightbox.classList.add('active');
@@ -479,6 +515,22 @@
   lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
   lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.classList.remove('active'); });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape') lightbox.classList.remove('active'); });
+
+  // ---- scroll reveal ----
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
 </script>
 
 </body>
